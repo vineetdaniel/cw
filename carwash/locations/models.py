@@ -15,3 +15,6 @@ class Locations(models.Model):
 
     class Meta:
         ordering = ('pincode', 'city', )
+
+    def __unicode__(self):
+        return u'%s City' % self.city

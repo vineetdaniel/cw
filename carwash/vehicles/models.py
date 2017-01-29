@@ -11,10 +11,13 @@ class Vehicles(models.Model): # car, truck etc
 
 
 class VehicleType(models.Model): #SUV/Sedan
-    type = models.CharField(max_length=20)
+    type = models.CharField(max_length=20, unique=True)
 
     class Meta:
         ordering = ('type', )
+
+    def __unicode__(self):
+        return '%s' % self.type
 
 
 class Brand(models.Model):
@@ -23,10 +26,18 @@ class Brand(models.Model):
     class Meta:
         ordering = ('brand_name', )
 
+    def __unicode__(self):
+        return '%s' % self.brand_name
+
 
 class Model(models.Model):
-    brand_id = models.ForeignKey(Brand, related_name='brand_model')
+    brand_id = models.ForeignKey(Brand)
+    vehicle_id = models.ForeignKey(VehicleType, default=1)
     model_name = models.CharField(max_length=20)
 
     class Meta:
         ordering = ('model_name', )
+
+    def __unicode__(self):
+        return '%s %s %s' % (self.brand_id, self.model_name,  self.vehicle_id)
+
