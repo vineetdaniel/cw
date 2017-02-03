@@ -3,6 +3,12 @@ from .models import ServiceNature, ServiceType
 
 
 admin.site.register(ServiceType)
-admin.site.register(ServiceNature)
+
+
+class ServiceNatureAdmin(admin.ModelAdmin):
+    list_filter = ['service_type', 'service_location']
+    search_fields = ['name']
+
+admin.site.register(ServiceNature, ServiceNatureAdmin)
 
 # Register your models here.

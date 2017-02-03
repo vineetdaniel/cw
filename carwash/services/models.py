@@ -22,12 +22,13 @@ class ServiceNature(models.Model):
     service_location = models.CharField(max_length=20, choices=CHOICES)
     name = models.CharField(max_length=25)
     desc = models.TextField()
-    price = models.PositiveIntegerField()
+    #price = models.PositiveIntegerField()
 
     class Meta:
         ordering = ('name', )
+        app_label = 'services'
 
     def __unicode__(self):
-        return '%s ' % self.name
+        return '%s %s' % (self.name, self.service_location)
 
 
