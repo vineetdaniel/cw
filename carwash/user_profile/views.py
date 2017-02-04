@@ -1,3 +1,18 @@
-from django.shortcuts import render
+from models import Profile, UserVehicles
+from rest_framework import generics
 
-# Create your views here.
+from .serializers import ProfileSerializer, VehiclesSerializers
+
+
+class ProfileDetailView(generics.RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+
+
+class UserVehiclesView(generics.RetrieveAPIView):
+    queryset = UserVehicles.objects.all()
+    serializer_class = VehiclesSerializers
+
+
+
+

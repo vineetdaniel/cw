@@ -19,6 +19,9 @@ class Franchise(models.Model):
     landline_no = models.PositiveIntegerField(blank=True, null=True)
     email = models.EmailField(blank=True)
     pincode = models.PositiveIntegerField(null=True)
+    lat = models.DecimalField(max_digits=9, decimal_places=3, null=True)
+    lon = models.DecimalField(max_digits=9, decimal_places=3, null=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):              # __unicode__ on Python 2
         return self.name
@@ -27,6 +30,7 @@ class Franchise(models.Model):
 class Services(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
     franchise = models.ForeignKey(Franchise, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, null=True)
     services = models.ForeignKey(ServiceNature)
     price = models.PositiveIntegerField()
     created = models.DateTimeField(auto_now_add=True)
@@ -35,6 +39,9 @@ class Services(models.Model):
 
     class Meta:
         unique_together = ('city', 'franchise', 'services', )
+        permissions = (
+            ('view_services', 'Can view'),
+        )
 
     def __unicode__(self):
         return '%s - %s' % (self.franchise, self.services, )

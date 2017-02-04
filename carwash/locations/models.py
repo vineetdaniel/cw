@@ -9,8 +9,8 @@ class Locations(models.Model):
     state = models.CharField(max_length=20)
     city = models.CharField(max_length=20)
     pincode = models.PositiveIntegerField()
-    latitude = models.DecimalField(decimal_places=2, max_digits=10)
-    longitude = models.DecimalField(decimal_places=2, max_digits=10)
+    latitude = models.DecimalField(decimal_places=3, max_digits=9)
+    longitude = models.DecimalField(decimal_places=3, max_digits=9)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
