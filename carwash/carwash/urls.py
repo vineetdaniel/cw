@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from user_profile.urls import profile
+from vehicles.urls import vehicles
 
 admin.site.site_header = 'CozyCar'
 admin.site.site_title = 'CozyCar Admin'
@@ -25,5 +26,6 @@ urlpatterns = [
     url(r'^accounts/login/$', auth_views.login, name='login'),
     url(r'^accounts/logout/$', auth_views.logout, name='logout'),
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('profile.urls')),
+    url(r'^api/', include(profile.urls)),
+    url(r'^api/', include(vehicles.urls)),
 ]

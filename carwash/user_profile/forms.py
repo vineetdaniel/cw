@@ -6,4 +6,4 @@ class VehicleFilter(django_filters.FilterSet):
 
     class Meta:
         model = UserVehicles
-        fields = ('model', )
+        fields = ('model', 'user')

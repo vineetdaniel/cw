@@ -3,6 +3,7 @@ from rest_framework import generics, filters, viewsets
 from .serializers import ProfileSerializer, VehiclesSerializers
 from .forms import VehicleFilter
 
+
 class DefaultsMixin(object):
     """Default settings for view authentication, permissions, filtering
      and pagination."""
@@ -33,7 +34,7 @@ class UserVehiclesViewSet(DefaultsMixin, viewsets.ModelViewSet):
     queryset = UserVehicles.objects.all()
     serializer_class = VehiclesSerializers
     filter_class = VehicleFilter
-    search_fields = ('brand',)
+    search_fields = ('brand', 'user__user',)
     ordering_fields = ('brand', )
 
 # class UserVehiclesView(generics.RetrieveAPIView):

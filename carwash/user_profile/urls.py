@@ -10,9 +10,13 @@
 #         name='vehicle_detail'),
 # ]
 
-
+from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 from . import views
 
 profile = DefaultRouter()
 profile.register(r'uservehicles', views.UserVehiclesViewSet)
+
+# urlpatterns = [
+#     url(r'^', include(profile.urls)),
+# ]

@@ -15,6 +15,6 @@ class VehiclesSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = UserVehicles
-        fields = ('model', 'brand', 'type', 'profile',)
+        fields = ('user', 'model', 'brand', 'type', 'profile',)
 
 
